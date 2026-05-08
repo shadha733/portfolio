@@ -17,7 +17,7 @@ This is my personal portfolio website created using HTML, CSS, and JavaScript.
 - JavaScript
 
 ## Live Website
-https://shadha733.github.io/portfolio/
+https://shadha-portfolio733.netlify.app
 
 ## Projects Included
 - Car Dealer Website
