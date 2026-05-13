@@ -1,16 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let currentPage = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-item");
 
-    let navLinks = document.querySelectorAll(".nav-item");
+    let currentPage = window.location.pathname.toLowerCase();
+
+    // normalize homepage
+    if (currentPage === "/" || currentPage === "") {
+        currentPage = "/index.html";
+    }
 
     navLinks.forEach(link => {
-        link.classList.remove("active");
 
-        if (link.getAttribute("href") === currentPage) {
+        let linkHref = link.getAttribute("href").toLowerCase();
+
+        // skip non html links (pdf etc.)
+        if (!linkHref.includes(".html")) return;
+
+        // normalize both sides
+        if (currentPage.endsWith(linkHref)) {
             link.classList.add("active");
         }
+
+
+
     });
 });
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // Select elements you want to animate
@@ -101,13 +117,22 @@ $(document).ready(function () {
     });
 });
 setTimeout(() => {
-    document.querySelector(".html").style.width = "95%";
-    document.querySelector(".css").style.width = "90%";
-    document.querySelector(".js").style.width = "85%";
-    document.querySelector(".python").style.width = "75%";
-    document.querySelector(".java").style.width = "65%";
-    document.querySelector(".testing").style.width = "90%";
-    document.querySelector(".sql").style.width="70%"
+
+      const skills = {
+        html: "95%",
+        css: "90%",
+        js: "85%",
+        python: "75%",
+        java: "65%",
+        testing: "90%",
+        sql: "70%"
+    };
+
+    Object.keys(skills).forEach(cls => {
+        const el = document.querySelector("." + cls);
+        if (el) el.style.width = skills[cls];
+    });
+
 }, 300);
 $(window).on("scroll", function () {
     $(".technical-skills").addClass("show");
@@ -165,6 +190,7 @@ if(toggle && nav){
 }
 document.querySelectorAll('.project').forEach(project => {
     const video = project.querySelector('.project-video');
+     if (!video) return;
 
     project.addEventListener('mouseenter', () => {
         video.currentTime = 0;
@@ -186,7 +212,74 @@ document.querySelectorAll('.project').forEach(project => {
 });
 
 });
+ let lastScrollTop = 0;
+ let scrollUpAmount = 0;
+
+  $(window).on('scroll', function () {
+    if ($(window).width()<= 768) {
+        const currentScrollTop = $(this).scrollTop();
+         // ignore tiny movements
+  if (Math.abs(currentScrollTop - lastScrollTop) <= 20) {
+    return;
+  }
+  // scrolling down
+    if (currentScrollTop > lastScrollTop && currentScrollTop > 80) {
+      $('.menu-toggle').fadeOut(200);
+      $('.dark-toggle').fadeOut(200);
+
+    scrollUpAmount = 0;
+    
+    } 
+     // SCROLLING UP
+  else if (currentScrollTop < lastScrollTop) {
+
+    scrollUpAmount += lastScrollTop - currentScrollTop;
+
+    // only show after enough upward scrolling
+    if (scrollUpAmount > 80) {
+
+      $('.menu-toggle').fadeIn(200);
+
+    }
+  }
+
+  lastScrollTop = currentScrollTop;
+}
+  });
+  // SIDEBAR SCROLL
+let lastSidebarScroll = 0;
+let sidebarScrollUpAmount = 0;
+
+$('.sidebar').on('scroll', function () {
+
+  const currentSidebarScroll = $(this).scrollTop();
+
+  // scrolling down
+  if (currentSidebarScroll > lastSidebarScroll && currentSidebarScroll > 80) {
+
+    $('.menu-toggle, .dark-toggle').fadeOut(200);
+
+    sidebarScrollUpAmount = 0;
+  }
+
+  // scrolling up
+  else if (currentSidebarScroll < lastSidebarScroll) {
+
+    sidebarScrollUpAmount += lastSidebarScroll - currentSidebarScroll;
+
+    // show only after enough upward scrolling
+    if (sidebarScrollUpAmount > 80) {
+
+      $('.menu-toggle, .dark-toggle').fadeIn(200);
+
+    }
+  }
+
+  lastSidebarScroll = currentSidebarScroll;
+
 });
-$(window).on("scroll", function () {
-    $(".technical-skills").addClass("show");
+
+
+    
+    
 });
