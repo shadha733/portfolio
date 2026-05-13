@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Shadha Alzuhairi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+               SHADHA<br>ALZUHAIRI
+            </div>
+
+            <nav class="nav">
+                <a class="nav-item" href="index.html">HOME</a>
+                <a class="nav-item" href="about.html">Experience & <br>Education</a>
+                <a class="nav-item" href="skills.html">SKILLS</a>
+                <a class="nav-item" href="portfolio.html">PORTFOLIO</a>
+                <a class="nav-item active" href="contact.html">CONTACT</a>
+               <a href="resume/Shadha Alzuhairi.pdf" download class="nav-item download-resume" id="downloadResume">Download Resume ⬇</a>
+                <div id="downloadMessage" class="success-message"></div>
+            </nav>
+             
+
+             <div class="footer">
+                <div class="social">
+                    <a href="https://www.linkedin.com/in/shadha-alzuhairi-a37467378/" target="_blank" class="social-icon">in</a>
+                   <a href="https://github.com/shadha733" target="_blank" class="social-icon">GH</a>
+                </div>
+                <div class="footer-info">
+                    www.shadhaalzuhairi.com<br> +1 702-787-0939<br>
+                    <small>Copyright ©2025. All rights reserved</small>
+                </div>
+            </div>
+        </div>
+
+        <main >
+            <button id="toggleMode" class="dark-toggle">🌙</button>
+            <button class="menu-toggle">☰</button>
+
+            <!-- CONTACT HEADER -->
+            <section class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="contact-subtitle">
+        I’d be happy to hear from you! Feel free to send a message or connect through any of the options below.
+    </p>
+            </section>
+    <div class="contact-section">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p>
+                <i class="fas fa-envelope"></i> <span>Email: </span>shadhaalzuhairi1@gmail.com</p>
+            <p><i class="fas fa-phone"></i> <span>Phone: </span>702-787-0939</p>
+            <p><i class="fas fa-map-marker-alt"></i> <span>Location: </span> Lansing, MI</p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h3>Send me a Message</h3>
+            <form id="contactForm" action="https://formspree.io/f/mvzdzbky" method="POST">
+                
+                <input type="text" name="name" id="name" placeholder="Your Name" >
+                <small class="error" id="nameError"></small>
+                <input type="email" name="email" id="email" placeholder="Your Email">
+                    <small class="error" id="emailError"></small>
+                <textarea name="message" id="message" rows="5" placeholder="Write your message here..." ></textarea>
+                    <small class="error" id="messageError"></small>
+                <button type="submit">Send Message</button>
+                 <div id="formSuccess" class="success-message"></div>
+
+            </form>
+        </div>
+    </div>
+
+
+        </main>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+         <script src="script.js"></script>
+        
+
+</body>
+
+</html>
